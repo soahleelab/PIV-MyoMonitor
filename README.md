@@ -20,3 +20,8 @@ https://www.mathworks.com/matlabcentral/fileexchange/27659-pivlab-particle-image
 # PIV-MyoMonitor Running Tutorial
 ### 1. Pre-Run Directory Setup
 PIV-MyoMonitor takes in a video with an mp4 or avi extension and analyzes it. Convenience updates such as batch analysis are planned in the future, but they don't exist in the current version, so you'll need to sort the directories in a way that makes sense for the analysis before you start. But don't worry, it's not that complicated a request, just create an empty folder and move the video files you want to analyze into it and start analyzing them. If you have multiple videos, make sure they're stored in separate folders, and inside each folder you'll have the analysis results for each video. 
+### 2. Start Analysis
+If you've made it this far, make sure the video you want to analyze is in mp4 or avi format, and replace line 8 of the code with "*.mp4" or "*.avi" as appropriate. The default mode is mp4. And run it the same way you would normally run MATLAB code.
+
+### 3. standard workflow
+In this tutorial, I will analyze the beating of a 3D cardiac organoid using brightfield imaging.
