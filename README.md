@@ -48,3 +48,25 @@ This is followed by an automatic analysis of the organoid contractility using th
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/4a03e6fa-1b34-4984-9c10-5b93d403dca5)
 
 When the analysis is complete, you'll see the same results as above and the prompt "Do it Again? Y/N:" If you enter "Y", you'll be returned to the window to enter the ROI again, giving you multiple opportunities to analyze it. If the contractility seen in the video is well reflected in the graph, enter "N" and move on to the next step.
+
+The next step is to deal with noise, where you can view the graph and enter an appropriate threshold value to flatten the graph. This process is designed to be a loop, so iterate to find the right threshold. Once you have a flattened graph, enter a value for the minimum peak prominence that allows you to select the peak of Contraction-Relaxation from the many peaks on the graph.
+
+![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/607c6d31-0347-42c9-935d-fcf6c1e74591)
+
+You will then be presented with a video that combines the beating video with a graph over time so that you can compare the peaks that have been selected as meaningful peaks while watching the video. The prompt will read "Enter the index of the peak that you want to delete, enter 0 if you dont need or 'r' to restore : " Please enter the index of the peak that you want to delete on the graph while watching the video. This process is also designed as a loop. When you're done, enter 0 to move on to the next step.
+
+![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/37f821a4-aafd-429a-b965-feaf79d91b37)
+
+After the above steps, only the peak for the Contraction-Relaxation Cycle is considered to be present and PIV-MyoMonitor will proceed to interpolate the data. This process makes it possible to get continuous data even if the video has a low framerate. Then, you can select the max peak of contraction and relaxation in the cycle and enter the index of the peak that will be used as the basis for calculating the BPM. Generally, there is one contraction peak and one relaxation peak per cycle. Make sure that the contraction peak is the first peak in the analysis, as we will analyze the odd numbered contractions and the even numbered relaxations.  
+Then, enter the indices of the first and last peaks as the start and end indices at the prompt, and you should be able to see a graph like the following. 
+
+![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/f15e9f22-4e33-431d-92d0-2ce6036e8749)
+
+The next step is to determine the start and end of the contraction/relaxation peak, and you'll be given a graph like this, which you can use as a guide to remove meaningless indexes. 
+
+![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/7534933c-9e36-489b-84f9-fc9d65afac75)
+
+If you're up to this point, you're done with user input. From the data you entered, PIV-Monitor will calculate and output the visualization and 22 parameters. 
+
+# Contact
+If you have any questions or requests, please email ghdus6520@gmail.com
