@@ -35,7 +35,7 @@ As you start running this code, you'll be prompted to select the folder where th
 
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/59f7176d-036f-4a46-b9da-d656f3f8b63e)
 
-This feature is designed for efficient analysis when the video is too long, so please enter the appropriate section to analyze based on the total duration, number of frames, and framerate of the video. In this case, length of organoid_1.mp4 is about 4 seconds. So, I decided to analyze full video.
+This feature is designed for efficient analysis when the video is too long, so please enter the appropriate section to analyze based on the total duration, number of frames, and framerate of the video. In this case, length of organoid_1.mp4 is about 4 seconds. So, I decided to analyze full video. We recommend choosing a video length that allows you to analyze at least three beats. 
 
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/e381400c-48b1-4ad4-b43a-35609807743a)
 
@@ -55,11 +55,11 @@ This is followed by an automatic analysis of the organoid contractility using th
 
 When the analysis is complete, you'll see the same results as above and the prompt "Do it Again? Y/N:" If you enter "Y", you'll be returned to the window to enter the ROI again, giving you multiple opportunities to analyze it. If the contractility seen in the video is well reflected in the graph, enter "N" and move on to the next step.
 
-The next step is to deal with noise, where you can view the graph and enter an appropriate threshold value to flatten the graph. This process is designed to be a loop, so iterate to find the right threshold. Once you have a flattened graph, enter a value for the minimum peak prominence that allows you to select the peak of Contraction-Relaxation from the many peaks on the graph. For example, I considered any peak below 1 to be noise, and entered 1 as the value for the threshold.  
+The next step is to deal with noise, where you can view the graph and enter an appropriate threshold value to flatten the graph. This process is designed to be a loop, so iterate to find the right threshold. For example, I considered any peak below 1 to be noise, and entered 1 as the value for the threshold. Once you have a flattened graph, enter a value for the minimum peak prominence that allows you to select the peak of Contraction-Relaxation from the many peaks on the graph. In my case, I entered a value of 0.1. 
 
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/607c6d31-0347-42c9-935d-fcf6c1e74591)
 
-You will then be presented with a video that combines the beating video with a graph over time so that you can compare the peaks that have been selected as meaningful peaks while watching the video. The prompt will read "Enter the index of the peak that you want to delete, enter 0 if you dont need or 'r' to restore : " Please enter the index of the peak that you want to delete on the graph while watching the video. This process is also designed as a loop. When you're done, enter 0 to move on to the next step.
+Then, you will then be presented with a video that combines the beating video with a graph over time so that you can compare the peaks that have been selected as meaningful peaks while watching the video. The prompt will read "Enter the index of the peak that you want to delete, enter 0 if you dont need or 'r' to restore : " Please enter the index of the peak that you want to delete on the graph while watching the video. In the graph above, I determined that the first peak was not part of the contraction-relaxation cycle, so I entered 1 to remove it. As you can see, the index will be constantly updated during the removal process, so please proceed with caution. This process is also designed as a loop. When you're done, enter 0 to move on to the next step.
 
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/37f821a4-aafd-429a-b965-feaf79d91b37)
 
@@ -68,11 +68,13 @@ Then, enter the indices of the first and last peaks as the start and end indices
 
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/f15e9f22-4e33-431d-92d0-2ce6036e8749)
 
-The next step is to determine the start and end of the contraction/relaxation peak, and you'll be given a graph like this, which you can use as a guide to remove meaningless indexes. 
+The next step is to determine the start and end of the contraction/relaxation peak, and you'll be given a graph like this, which you can use as a guide to remove meaningless indices.
 
-![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/7534933c-9e36-489b-84f9-fc9d65afac75)
+![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/389ae1b2-d8c8-42ce-abc6-ace693776a0d)
 
-If you're up to this point, you're done with user input. From the data you entered, PIV-Monitor will calculate and output the visualization and 22 parameters. 
+As you can see in the graph above, the indices highlighted by the red circles are actually points that are not related to the contraction and relaxation peaks, so we need to enter them and remove them. Keep in mind that this removal process is also designed as a loop and the indices are updated. In the example above, after removing the 4th index, instead of entering 8, we would have to enter 7 to remove the index we want because it will be pulled up one space. 
+
+If you're up to this point, you're done with user input. From the data you entered, PIV-Monitor will calculate and output the visualization and 22 parameters. Do not quit MATLAB or shut down your system during this process as there is a lot of math and image processing happening in MATLAB. 
 
 # Contact
 If you have any questions or requests, please email ghdus6520@gmail.com
