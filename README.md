@@ -19,17 +19,23 @@ https://www.mathworks.com/matlabcentral/fileexchange/27659-pivlab-particle-image
 
 # PIV-MyoMonitor Running Tutorial
 ### 1. Pre-Run Directory Setup
-PIV-MyoMonitor takes in a video with an mp4 or avi extension and analyzes it. Convenience updates such as batch analysis are planned in the future, but they don't exist in the current version, so you'll need to sort the directories in a way that makes sense for the analysis before you start. But don't worry, it's not that complicated a request, just create an empty folder and move the video files you want to analyze into it and start analyzing them. If you have multiple videos, make sure they're stored in separate folders, and inside each folder you'll have the analysis results for each video. 
+![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/0002dcb5-a396-40b2-9a06-5e7d45f95b91)
+PIV-MyoMonitor takes in a video with an mp4 or avi format and analyzes it. Convenience updates such as batch analysis are planned in the future, but they don't exist in the current version, so you'll need to sort the directories in a way that makes sense for the analysis before you start. But don't worry, it's not that complicated a request, just create an empty folder and move the video files you want to analyze into it and start analyzing them. If you have multiple videos, make sure they're stored in separate folders, and inside each folder you'll have the analysis results for each video. 
 ### 2. Start Analysis
+![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/d122db2c-d102-4572-b322-05f2132a6e5c)
+
 If you've made it this far, make sure the video you want to analyze is in mp4 or avi format, and replace line 8 of the code with "*.mp4" or "*.avi" as appropriate. The default mode is mp4. And run it the same way you would normally run MATLAB code.
 
 ### 3. standard workflow
-In this tutorial, I will analyze the beating of a 3D cardiac organoid using brightfield imaging.
+In this tutorial, we'll be analyzing the Organoid_1 video sample, one of the videos pictured above, which is a brightfield recording of a three-dimensional heart organoid beating in a standard lab environment. 
+
+![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/03d923a2-9026-4df3-b55a-130650b8ae9f)
+
 As you start running this code, you'll be prompted to select the folder where the video you want to analyze is stored. If you've followed the previous steps, you should have one video per folder. Here, select the folder where the video you want to analyze is stored.
 
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/59f7176d-036f-4a46-b9da-d656f3f8b63e)
 
-This feature is designed for efficient analysis when the video is too long, so please enter the appropriate section to analyze based on the total duration, number of frames, and framerate of the video.
+This feature is designed for efficient analysis when the video is too long, so please enter the appropriate section to analyze based on the total duration, number of frames, and framerate of the video. In this case, length of organoid_1.mp4 is about 4 seconds. So, I decided to analyze full video.
 
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/e381400c-48b1-4ad4-b43a-35609807743a)
 
@@ -37,7 +43,7 @@ Next is an input for the stiffness of the organization you want to analyze (for 
 
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/0aae4752-bf3e-4c11-b29c-f0b098facb6d)
 
-Since the analysis through our software is not direct, but rather imaging through video, we need information about scale. Similar to our videos obtained with standard lab equipment, there will typically be a scalebar in the lower right corner of the video. Using a program like ImageJ, measure its length (in pixels) and enter it as shown in the example photo.
+Since the analysis through our software is not direct, but rather imaging through video, we need information about scale. Similar to our videos obtained with standard lab equipment, there will typically be a scalebar in the lower right corner of the video. Using a program like ImageJ, measure its length (in pixels) and enter it as shown in the example photo. 
 
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/70db3706-6b8a-4029-994f-0c71461d6ecd)
 
@@ -49,7 +55,7 @@ This is followed by an automatic analysis of the organoid contractility using th
 
 When the analysis is complete, you'll see the same results as above and the prompt "Do it Again? Y/N:" If you enter "Y", you'll be returned to the window to enter the ROI again, giving you multiple opportunities to analyze it. If the contractility seen in the video is well reflected in the graph, enter "N" and move on to the next step.
 
-The next step is to deal with noise, where you can view the graph and enter an appropriate threshold value to flatten the graph. This process is designed to be a loop, so iterate to find the right threshold. Once you have a flattened graph, enter a value for the minimum peak prominence that allows you to select the peak of Contraction-Relaxation from the many peaks on the graph.
+The next step is to deal with noise, where you can view the graph and enter an appropriate threshold value to flatten the graph. This process is designed to be a loop, so iterate to find the right threshold. Once you have a flattened graph, enter a value for the minimum peak prominence that allows you to select the peak of Contraction-Relaxation from the many peaks on the graph. For example, I considered any peak below 1 to be noise, and entered 1 as the value for the threshold.  
 
 ![image](https://github.com/soahleelab/PIV-MyoMonitor/assets/155861561/607c6d31-0347-42c9-935d-fcf6c1e74591)
 
